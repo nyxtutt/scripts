@@ -5,7 +5,6 @@
 NAME="Nyx"
 TIME=$(date +"%H:%M")
 CURRENT_HOUR=$(date +"%H")
-UPDATES=$(checkupdates | wc -l)
 TEMPERATURE=$(curl -s "wttr.in/dfw?format=%t")
 
 # Selects the greeting
@@ -22,4 +21,4 @@ fi
 # Outputs info
 echo -e "$GREETING, $(gum style --bold "$NAME")!"
 echo -e "It's currently $(gum style --bold "$TIME")."
-echo -e "You have $(gum style --bold "$UPDATES") updates available, and it's $(gum style --bold "$TEMPERATURE") outside."
+echo -e "It's $(gum style --bold "$TEMPERATURE") outside."
