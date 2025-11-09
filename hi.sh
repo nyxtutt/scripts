@@ -2,10 +2,10 @@
 # Greeting script
 
 # Variables
-NAME="Nyx"
+NAME=$(getent passwd $USER | cut -d: -f5 | awk '{print $1}')
 TIME=$(date +"%H:%M")
 CURRENT_HOUR=$(date +"%H")
-TEMPERATURE=$(curl -s "wttr.in/dfw?format=%t")
+TEMPERATURE=$(curl -s "wttr.in/?i&format=%t")
 
 # Selects the greeting
 if (( 10#$CURRENT_HOUR >= 5 && 10#$CURRENT_HOUR < 12 )); then
@@ -20,5 +20,4 @@ fi
 
 # Outputs info
 echo -e "$GREETING, $(gum style --bold "$NAME")!"
-echo -e "It's currently $(gum style --bold "$TIME")."
-echo -e "It's $(gum style --bold "$TEMPERATURE") outside."
+echo -e "It's currently $(gum style --bold "$TIME"). and it's $(gum style --bold "$TEMPERATURE") outside."
